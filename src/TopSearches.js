@@ -1,11 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 // import '../reducers/top_search.js'
+
 import {fetchTopSearches} from './actions/fetchTopSearches.js'
 import './App.css'
 
-
-
+//  {this.props.topSearches.map((top_search, index) => (
+//       <tr>
+//         <td>{Object.keys(top_search).map(function(key) {
+//           return <div> {key} {top_search[key]}  </div>;
+//           })}
+//         </td>
+//           <p> &nbsp;</p>
+//     </tr>
+// ))}
 
 class TopSearches extends React.Component {
 
@@ -19,17 +27,15 @@ class TopSearches extends React.Component {
          return(
            <div className="topsearches">
              <th> Search Term Count </th>
-                   {console.log('topsearches', this.props.topSearches)}
-                   {this.props.topSearches.map((top_search, index) => (
-                        <tr>
-                          <td>{Object.keys(top_search).map(function(key) {
-                            return <div> {key} {top_search[key]}  </div>;
-                            })}
-                          </td>
-                            <p> &nbsp;</p>
-                      </tr>
-                  ))}
-
+              {this.props.topSearches.map((top_search, index) => (
+                   <tr>
+                     <td>{Object.keys(top_search).map(function(key) {
+                       return <div> {key} {top_search[key]}  </div>;
+                       })}
+                     </td>
+                       <p> &nbsp;</p>
+                 </tr>
+             ))}
            </div>
 
        )
@@ -39,7 +45,7 @@ class TopSearches extends React.Component {
 
 const mapStateToProps = state => {
   return (
-    {topSearches: state.topSearches}
+    {topSearches: state.topSearchReducer.topSearches}
   )
 }
 

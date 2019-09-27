@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import {fetchSearches} from '../actions/fetchSearches.js'
 // import { MDBContainer, MDBCol, MDBRow, MDBCard, MDBCardUp, MDBCardBody, MDBAvatar, MDBRotatingCard, MDBIcon } from "mdbreact";
     // <Item items={this.state.items}  />
+          // <Item items={this.props.searches.data}/>
 
 const priceYugeAPI_KEY = 'fCBxRI3EUVk2kSMxPLkGYTcXpvPRfx1XN4C';
 const BASE_URL = 'https://price-api.datayuge.com/api/v1/compare/search?' + `api_key=${priceYugeAPI_KEY}&product=`;
@@ -64,7 +65,7 @@ class SearchContainer extends React.Component {
              <Button type="submit" color="primary"  className="text-center" size="sm">Search</Button>
          </form>
           <div>
-            {console.log('searches', this.props.searches)}
+             <Item items={this.props.searches.data} />
           </div>
         </div>
 
@@ -74,7 +75,7 @@ class SearchContainer extends React.Component {
 
 const mapStateToProps = state => {
   return (
-    {searches: state.searches}
+    {searches: state.searchReducer.searches}
   )
 }
 

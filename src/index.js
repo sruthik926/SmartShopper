@@ -7,16 +7,19 @@ import { Provider } from 'react-redux'
 import topSearchReducer from './reducers/topSearchReducer'
 import searchReducer from './reducers/searchReducer'
 
-const reducer = combineReducers({
-    topSearches: topSearchReducer,
-    searches: searchReducer
+const rootReducer = combineReducers({
+   topSearchReducer ,
+    searchReducer
+
 })
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancer = compose()
 
-let myStore = createStore(reducer, composeEnhancers(applyMiddleware(thunk)))
+let myStore = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
+console.log('myStore', myStore)
 
 render (
   <Provider store={myStore}>

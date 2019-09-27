@@ -51,7 +51,7 @@ class Item extends React.Component {
 
 
   render() {
-
+        console.log('props', this.props.items)
         {this.state.items = this.props.items}
          console.log('items', this.state.items)
         // {console.log('Item', this.state.items)}
