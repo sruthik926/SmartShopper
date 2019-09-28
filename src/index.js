@@ -6,11 +6,14 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import topSearchReducer from './reducers/topSearchReducer'
 import searchReducer from './reducers/searchReducer'
+import productDetailReducer from './reducers/productDetailReducer'
+import compareDetailReducer from './reducers/compareDetailReducer'
 
 const rootReducer = combineReducers({
-   topSearchReducer ,
-    searchReducer
-
+   topSearchReducer,
+   searchReducer,
+   productDetailReducer,
+   compareDetailReducer
 })
 
 
