@@ -1,5 +1,5 @@
 import React from 'react';
-import App from './App';
+import App from './Components/App.js';
 import { render } from 'react-dom';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux'
 import thunk from 'redux-thunk'
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const enhancer = compose()
+//const enhancer = compose()
 
 let myStore = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 console.log('myStore', myStore)

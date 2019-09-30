@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button} from 'reactstrap';
 import '../App.css'
-import Item from '../Item'
+import ItemContainer from '../Containers/ItemContainer'
 import '../Item.css'
 import { connect } from 'react-redux'
 import {fetchSearches} from '../actions/fetchSearches.js'
@@ -10,8 +10,8 @@ import {insertSearch} from '../actions/insertSearch.js'
     // <Item items={this.state.items}  />
           // <Item items={this.props.searches.data}/>
 
-const priceYugeAPI_KEY = 'fCBxRI3EUVk2kSMxPLkGYTcXpvPRfx1XN4C';
-const BASE_URL = 'https://price-api.datayuge.com/api/v1/compare/search?' + `api_key=${priceYugeAPI_KEY}&product=`;
+//const priceYugeAPI_KEY = 'fCBxRI3EUVk2kSMxPLkGYTcXpvPRfx1XN4C';
+//const BASE_URL = 'https://price-api.datayuge.com/api/v1/compare/search?' + `api_key=${priceYugeAPI_KEY}&product=`;
 
 // this.state.itemDetails.push(jsonResp.data.main_specs))));
 
@@ -41,7 +41,7 @@ class SearchContainer extends React.Component {
              <Button type="submit" color="primary"  className="text-center" size="sm">Search</Button>
          </form>
           <div>
-             <Item items={this.props.searches.data}/>
+             <ItemContainer items={this.props.searches.data}/>
            </div>
         </div>
 

@@ -9,9 +9,9 @@ import About from './About'
 // import Categories from './Categories'
 import NavBar from './NavBar'
 // import DropDown from './DropDown'
-import Contact from './Contact'
+import Contact from '../Components/Contact'
 import TopSearches from './TopSearches'
-import SearchContainer from './Containers/SearchContainer'
+import SearchContainer from '../Containers/SearchContainer'
 
 
 
@@ -77,10 +77,6 @@ class App extends React.Component {
    )
  }
 }
-
-
-
-
 
 
 
