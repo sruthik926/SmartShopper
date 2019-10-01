@@ -6,35 +6,36 @@ import {fetchTopSearches} from '../actions/fetchTopSearches.js'
 // import './App.css'
 
 
-
 class TopSearches extends React.Component {
+    state = {
+      arr: []
+    }
 
   componentDidMount(){
+
     {console.log('inside did mount')}
-    this.props.fetchTopSearches()
+    this.props.fetchTopSearches();
+    // this.convertToArrayofObject();
 
   }
 
+  convertToArrayofObject(){
+        this.state.arr = [];
+        console.log("prop",this.props.topSearches)
+        Object.keys(this.props.topSearches).forEach((key) => {
+            var newObj = {};
+            newObj[key] = this.props.topSearches[key];
+            // console.log('newObj', newObj)
+            this.state.arr.push(newObj);
+        });
 
-    // {Object.keys(top_search).map(function(key) {
-    //   return
-    //   <tr>
-    //     <td width="650"> {key} </td>
-    //     <td width="300"> {top_search[key]} </td> ;
-    //   </tr>
-    //
-    // })}
 
-                        // {this.props.topSearches.map((top_search, index) => (
-                        //
-                        //
-                        //   ))}
 
-                        // {Object.keys(top_search).map(function(key) {
-                        //        console.log("key",{key})
-                        //        console.log("top-search", {top_search[key]});
+  }
 
   render() {
+    this.convertToArrayofObject();
+   console.log('newArr', this.state.arr)
     return(
       <div className="topsearches">
          <table border="2" align="center">
@@ -43,12 +44,10 @@ class TopSearches extends React.Component {
              <th>Count </th>
            </thead>
            <tbody>
-             {this.props.topSearches.map((top_search, index) => (
+             {this.state.arr.map((top_search, index) => (
                <tr>
-                 {Object.keys(top_search).map(function(key) {
-                   return <td>{top_search[key]}</td>;
-
-                 })}
+                 <td>{Object.keys(top_search)[0]}</td>
+                 <td>{Object.values(top_search)[0]}</td>
                </tr>
              ))}
            </tbody>

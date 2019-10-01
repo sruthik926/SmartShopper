@@ -12,7 +12,7 @@ export function fetchTopSearches() {
    fetch('http://localhost:3001/api/v1/top_searches')
    .then(resp => resp.json())
    .then(topSearches => {
-      console.log(topSearches);
+      console.log("Inside Action",topSearches);
       dispatch({
          type: 'FETCH_TOP_SEARCHES',
          payload: topSearches
