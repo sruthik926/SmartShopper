@@ -1,7 +1,5 @@
 const priceYugeAPI_KEY = 'fCBxRI3EUVk2kSMxPLkGYTcXpvPRfx1XN4C';
 
-// const BASE_URL = 'https://price-api.datayuge.com/api/v1/compare/detail?' + `api_key=${priceYugeAPI_KEY}&id=${this.props.product_id}`;
-
 export function fetchCompareDetails(product_id) {
    return (dispatch) => {
      fetch('https://price-api.datayuge.com/api/v1/compare/detail?' + `api_key=${priceYugeAPI_KEY}&id=${product_id}`)
@@ -12,3 +10,5 @@ export function fetchCompareDetails(product_id) {
      }))
    }
 }
+
+// action creator - named fetchCompareDetails - passes product id as a parameter, fetch call to retrieve the ProductDetails - type is a key of the hash - tells you the action to pass in -returns the product_detail_data - to dispatch then goes to reducer

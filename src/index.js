@@ -9,7 +9,7 @@ import searchReducer from './reducers/searchReducer'
 import productDetailReducer from './reducers/productDetailReducer'
 import compareDetailReducer from './reducers/compareDetailReducer'
 
-const rootReducer = combineReducers({
+const rootReducer = combineReducers({  //multiple reducers stored in one function
    topSearchReducer,
    searchReducer,
    productDetailReducer,
@@ -17,21 +17,18 @@ const rootReducer = combineReducers({
 })
 
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-//const enhancer = compose()
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//
+
 
 let myStore = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
-console.log('myStore', myStore)
+// Redux store, is created using the createStore. It is a hash which stores all the state. Two parameters passed - reducer and the middleware
 
+ // Provider component is used to set the connection between the component and the store, store is passed in as a prop
 render (
   <Provider store={myStore}>
   <App />
   </Provider>,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-// serviceWorker.unregister();

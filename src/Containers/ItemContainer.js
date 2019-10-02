@@ -1,16 +1,11 @@
 import React from 'react'
-
-import { Link, Route, Router,HashRouter } from "react-router-dom";
+import { Link, Route, HashRouter } from "react-router-dom";
 import { connect } from 'react-redux'
 import { fetchProductDetails } from '../actions/fetchProductDetails.js'
 import { fetchCompareDetails } from '../actions/fetchCompareDetails.js'
-// import { BrowserRouter as Router, Route} from "react-router-dom";
- import ProductDetail from '../Components/ProductDetail'
- import CompareCard from '../Components/CompareCard'
-
+import ProductDetail from '../Components/ProductDetail'
+import CompareCard from '../Components/CompareCard'
 import '../Item.css'
-
-
 import '../newstyle.css'
 
 
@@ -19,21 +14,26 @@ class ItemContainer extends React.Component {
 
 
  handleClickProductDetail (product_id) {
-     // event.preventDefault();
-     console.log('product_id inside handleClickProductDetail', product_id)
+
+    console.log('product_id inside handleClickProductDetail', product_id)
     this.props.fetchProductDetails(product_id);
     console.log("Kris-Product Details",this.props.productDetails)
   }
-
+// handleClickproductDetail function which takes an item's product_id as a parameter - calls the fetchProductDetails action creator
 
  handleClickCompareDetail (product_id) {
-   // event.preventDefault();
+
      console.log('product_id inside handleClickCompareDetail', product_id)
     this.props.fetchCompareDetails(product_id);
+
+    // handleClickCompareDetail function which takes an item's product_id as a parameter - calls the fetchCompareDetails action creator
+
  }
 
+ // items props is being passed from SearchContainer component - and mapping over the items array. Setting the link to Compare and Product Detail component - invoking the handleClickProductDetail and handleClickCompareDetail onClick - also being called within HashRouter
+
   render() {
-      //console.log("Prop-items",this.props.items)
+
       if(this.props.items === undefined ){
             return <center> <p>&nbsp;</p> Please enter a string value to search for items </center>
          }
@@ -45,7 +45,7 @@ class ItemContainer extends React.Component {
                   <td>
                       <p> &nbsp;</p>
                       <p></p>
-                      <p>  <img src={item.product_image}/></p>
+                      <p>  <img src={item.product_image} alt="product_image"/></p>
                        <p>{item.product_title}</p>
 
                        <HashRouter>
@@ -63,10 +63,10 @@ class ItemContainer extends React.Component {
         </div>
       );
 
-
-
   }
 }
+
+//mapStateToProps - returning productDetails and compareDetails from Redux store - as props -
 
 const mapStateToProps = state => {
   return (
@@ -75,11 +75,6 @@ const mapStateToProps = state => {
   )
 }
 
-// const mapDispatchToProps = dispatch => ({
-//   fetchProductDetails: product_id => dispatch(fetchProductDetails(product_id)),
-//   fetchCompareDetails: product_id => dispatch(fetchCompareDetails(product_id))
-// })
-
-
 
 export default connect(mapStateToProps, {fetchProductDetails, fetchCompareDetails})(ItemContainer);
+//connecting ItemContainer to Redux store - passing mapStateToProps and two action creators -

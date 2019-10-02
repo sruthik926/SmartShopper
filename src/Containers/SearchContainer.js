@@ -6,14 +6,7 @@ import '../Item.css'
 import { connect } from 'react-redux'
 import {fetchSearches} from '../actions/fetchSearches.js'
 import {insertSearch} from '../actions/insertSearch.js'
-// import { MDBContainer, MDBCol, MDBRow, MDBCard, MDBCardUp, MDBCardBody, MDBAvatar, MDBRotatingCard, MDBIcon } from "mdbreact";
-    // <Item items={this.state.items}  />
-          // <Item items={this.props.searches.data}/>
 
-//const priceYugeAPI_KEY = 'fCBxRI3EUVk2kSMxPLkGYTcXpvPRfx1XN4C';
-//const BASE_URL = 'https://price-api.datayuge.com/api/v1/compare/search?' + `api_key=${priceYugeAPI_KEY}&product=`;
-
-// this.state.itemDetails.push(jsonResp.data.main_specs))));
 
 class SearchContainer extends React.Component {
 
@@ -22,6 +15,7 @@ class SearchContainer extends React.Component {
       searchTerm: event.target.value,
     });
   }
+   //handleSearchInputChange - evemt handler - passes an event  - onChane in this case - as a param and changes the searchTerm - as it changes
 
   handleSubmit= event =>{
     event.preventDefault();
@@ -29,6 +23,7 @@ class SearchContainer extends React.Component {
     this.props.insertSearch(this.state.searchTerm)
   }
 
+//handleSubmit - another eventhandler - passes in an event as a param - which is onSubmit - and invokes the two action creators - and passes searchTerm
 
   render() {
     console.log("Searched Items",this.props.searches)
@@ -49,16 +44,23 @@ class SearchContainer extends React.Component {
   }
 }
 
+//holds the form - search button and input - uses Button component for the search button
+//Invokes the ItemContainer component within SearchContainer and passes the search data as a prop which comes from the mapStateToProps
+
 const mapStateToProps = state => {
   return (
     {searches: state.searchReducer.searches}
   )
 }
+// returns searchdata from Redux store -
 
 const mapDispatchToProps = dispatch => ({
   fetchSearches: searchTerm => dispatch(fetchSearches(searchTerm)),
   insertSearch: searchTerm => dispatch(insertSearch(searchTerm))
 })
 
+//Dispatch these two action creators -
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);
+//connecting SearchContainer with Redux store, - passes two parameters mapStateToProps and mapDispatchToProps

@@ -1,11 +1,3 @@
-// export function fetchSearchItem() {
-//   return (dispatch) => {
-//     dispatch({ type: '' });
-//     return fetch('https://price-api.datayuge.com/api/v1/compare/search?' + `api_key=${priceYugeAPI_KEY}&product=`')
-//       .then(response => response.json())
-//       .then(items => dispatch({ type: 'SEARCH_ITEMS', cats }));
-//   };
-// }
 
 export function fetchTopSearches() {
  return (dispatch) => {
@@ -20,3 +12,5 @@ export function fetchTopSearches() {
     })
  }
 }
+
+// action creator - named fetchTopSearches - no parameter required - fetch call to retrieve the TopSearches  - type is a key of the hash - tells you the action to pass in -returns the top_searches  - to dispatch then goes to reducer

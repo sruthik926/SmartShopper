@@ -7,12 +7,7 @@ import { Link } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import './App.js'
 
-
-
-
-// const link = {
-//   textDecoration: 'underline'
-// }\
+// NavBar component - sets the links to each one of the components using NavLink component
 
 
 const NavBar = () => {

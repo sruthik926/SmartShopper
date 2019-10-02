@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import '../reducers/top_search.js'
-
 import {fetchTopSearches} from '../actions/fetchTopSearches.js'
-// import './App.css'
+
+//connecting the TopSearch component to Redux store using connect.
 
 
 class TopSearches extends React.Component {
@@ -11,11 +10,14 @@ class TopSearches extends React.Component {
       arr: []
     }
 
+    //having local state - to store top_searches - array of objects
+
   componentDidMount(){
 
-    {console.log('inside did mount')}
+    console.log('inside did mount')
     this.props.fetchTopSearches();
-    // this.convertToArrayofObject();
+
+    //invoking the fetchTopSearches action creator withih ComponentDidMount-  ComponentDidMount is a LifeCycle method - where API calls are typically made.
 
   }
 
@@ -25,13 +27,14 @@ class TopSearches extends React.Component {
         Object.keys(this.props.topSearches).forEach((key) => {
             var newObj = {};
             newObj[key] = this.props.topSearches[key];
-            // console.log('newObj', newObj)
             this.state.arr.push(newObj);
         });
-
-
+     // this function converts an array of one object into an array of multiple objects
 
   }
+
+  //invoking the convertToArrayofObject method -
+  //Map of that array of multiple objects
 
   render() {
     this.convertToArrayofObject();
@@ -57,6 +60,7 @@ class TopSearches extends React.Component {
    }
  }
 
+//mapStateToProps  - return updated state of topSearched and being passed as prop-
 
 const mapStateToProps = state => {
   return (
@@ -65,3 +69,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {fetchTopSearches})(TopSearches)
+//connecting the store and topSearch component - passing mapStateToProps as a parameter, and action creator - dispatch takes place- more elegent way fo dispatching

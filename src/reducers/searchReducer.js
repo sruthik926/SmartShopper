@@ -7,3 +7,5 @@ export default function searchReducer(state = {searches: []}, action) {
       return state
   }
 };
+
+//reducer takes two parameters, intiail state and action - the action comes from action creator- the reducer is responsible for updating the state - returns default state - 
