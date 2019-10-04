@@ -21,41 +21,46 @@ class TopSearches extends React.Component {
 
   }
 
-  convertToArrayofObject(){
-        this.state.arr = [];
-        console.log("prop",this.props.topSearches)
-        Object.keys(this.props.topSearches).forEach((key) => {
-            var newObj = {};
-            newObj[key] = this.props.topSearches[key];
-            this.state.arr.push(newObj);
-        });
-     // this function converts an array of one object into an array of multiple objects
-
-  }
+  // convertToArrayofObject(){
+  //       this.state.arr = [];
+  //       console.log("prop",this.props.topSearches)
+  //       Object.keys(this.props.topSearches).forEach((key) => {
+  //           var newObj = {};
+  //           newObj[key] = this.props.topSearches[key];
+  //           this.state.arr.push(newObj);
+  //       });
+  //    // this function converts an array of one object into an array of multiple objects
+  //
+  // }
 
   //invoking the convertToArrayofObject method -
   //Map of that array of multiple objects
 
   render() {
-    this.convertToArrayofObject();
-   console.log('newArr', this.state.arr)
+    // this.convertToArrayofObject();
+   // console.log('newArr', this.state.arr)
+    console.log('topsearches', this.props.topSearches)
     return(
       <div className="topsearches">
-         <table border="2" align="center">
-           <thead>
-             <th> Search Term </th>
-             <th>Count </th>
-           </thead>
-           <tbody>
-             {this.state.arr.map((top_search, index) => (
-               <tr>
-                 <td>{Object.keys(top_search)[0]}</td>
-                 <td>{Object.values(top_search)[0]}</td>
-               </tr>
-             ))}
-           </tbody>
-         </table>
-       </div>
+       <table border="2" align="center">
+         <thead>
+           <th> Search Term </th>
+           <th>Count </th>
+         </thead>
+         <tbody>
+           {this.props.topSearches.map(top_search =>
+             Object.keys(top_search).map(key => {
+               return (
+                 <tr>
+                   <td>{key}</td>
+                   <td>{top_search[key]}</td>
+                 </tr>
+               );
+             })
+           )}
+         </tbody>
+       </table>
+     </div>
      )
    }
  }
