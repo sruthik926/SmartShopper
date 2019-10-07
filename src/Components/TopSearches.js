@@ -1,45 +1,39 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {fetchTopSearches} from '../actions/fetchTopSearches.js'
+import {allSearches} from '../actions/allSearches.js'
+import { Link, Route, HashRouter } from "react-router-dom";
+import Search from './Searches'
 
 //connecting the TopSearch component to Redux store using connect.
 
 
 class TopSearches extends React.Component {
-    state = {
-      arr: []
-    }
 
-    //having local state - to store top_searches - array of objects
 
   componentDidMount(){
 
     console.log('inside did mount')
     this.props.fetchTopSearches();
+    // console.log('fetchTopSearches', this.props.fetchTopSearches())
+    this.props.allSearches();
+    // console.log('allsearches', this.props.allSearches())
 
     //invoking the fetchTopSearches action creator withih ComponentDidMount-  ComponentDidMount is a LifeCycle method - where API calls are typically made.
 
   }
-
-  // convertToArrayofObject(){
-  //       this.state.arr = [];
-  //       console.log("prop",this.props.topSearches)
-  //       Object.keys(this.props.topSearches).forEach((key) => {
-  //           var newObj = {};
-  //           newObj[key] = this.props.topSearches[key];
-  //           this.state.arr.push(newObj);
-  //       });
-  //    // this function converts an array of one object into an array of multiple objects
   //
+  // handleSearches = event => {
+  //     this.props.allSearches()
   // }
 
-  //invoking the convertToArrayofObject method -
-  //Map of that array of multiple objects
+
 
   render() {
     // this.convertToArrayofObject();
    // console.log('newArr', this.state.arr)
     console.log('topsearches', this.props.topSearches)
+    console.log('searches', this.props.topSearches)
     return(
       <div className="topsearches">
        <table border="2" align="center">
@@ -60,6 +54,10 @@ class TopSearches extends React.Component {
            )}
          </tbody>
        </table>
+       <HashRouter>
+           <p><Link to='/searches'> All Searches </Link></p>
+             <Route exact path='/searches' render={()=><Search all_searches={this.props.getAllSearches}/>}/>
+       </HashRouter>
      </div>
      )
    }
@@ -69,9 +67,12 @@ class TopSearches extends React.Component {
 
 const mapStateToProps = state => {
   return (
-    {topSearches: state.topSearchReducer.topSearches}
+    {topSearches: state.topSearchReducer.topSearches,
+     allSearches: state.allSearchesReducer.allSearches
+    }
   )
 }
 
-export default connect(mapStateToProps, {fetchTopSearches})(TopSearches)
+
+export default connect(mapStateToProps, {fetchTopSearches, allSearches})(TopSearches);
 //connecting the store and topSearch component - passing mapStateToProps as a parameter, and action creator - dispatch takes place- more elegent way fo dispatching

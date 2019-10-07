@@ -8,12 +8,15 @@ import topSearchReducer from './reducers/topSearchReducer'
 import searchReducer from './reducers/searchReducer'
 import productDetailReducer from './reducers/productDetailReducer'
 import compareDetailReducer from './reducers/compareDetailReducer'
+import allSearchesReducer from './reducers/allSearchesReducer'
 
 const rootReducer = combineReducers({  //multiple reducers stored in one function
    topSearchReducer,
    searchReducer,
    productDetailReducer,
-   compareDetailReducer
+   compareDetailReducer,
+   allSearchesReducer
+
 })
 
 
