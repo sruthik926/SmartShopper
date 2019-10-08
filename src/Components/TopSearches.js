@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {fetchTopSearches} from '../actions/fetchTopSearches.js'
-import {allSearches} from '../actions/allSearches.js'
+import {fetchallSearches} from '../actions/fetchallSearches.js'
 import { Link, Route, HashRouter } from "react-router-dom";
 import Search from './Searches'
 
@@ -16,8 +16,8 @@ class TopSearches extends React.Component {
     console.log('inside did mount')
     this.props.fetchTopSearches();
     // console.log('fetchTopSearches', this.props.fetchTopSearches())
-    this.props.allSearches();
-    // console.log('allsearches', this.props.allSearches())
+    this.props.fetchallSearches();
+    // console.log('allsearches', this.props.fetchallSearches())
 
     //invoking the fetchTopSearches action creator withih ComponentDidMount-  ComponentDidMount is a LifeCycle method - where API calls are typically made.
 
@@ -32,8 +32,8 @@ class TopSearches extends React.Component {
   render() {
     // this.convertToArrayofObject();
    // console.log('newArr', this.state.arr)
-    console.log('topsearches', this.props.topSearches)
-    console.log('searches', this.props.topSearches)
+    // console.log('topsearches', this.props.topSearches)
+    console.log('searches', this.props.allSearches)
     return(
       <div className="topsearches">
        <table border="2" align="center">
@@ -56,7 +56,7 @@ class TopSearches extends React.Component {
        </table>
        <HashRouter>
            <p><Link to='/searches'> All Searches </Link></p>
-             <Route exact path='/searches' render={()=><Search all_searches={this.props.getAllSearches}/>}/>
+             <Route exact path='/searches' render={()=><Search all_searches={this.props.allSearches}/>}/>
        </HashRouter>
      </div>
      )
@@ -74,5 +74,5 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, {fetchTopSearches, allSearches})(TopSearches);
+export default connect(mapStateToProps, {fetchTopSearches, fetchallSearches})(TopSearches);
 //connecting the store and topSearch component - passing mapStateToProps as a parameter, and action creator - dispatch takes place- more elegent way fo dispatching
