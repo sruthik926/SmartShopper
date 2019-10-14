@@ -14,9 +14,6 @@ import SearchContainer from '../Containers/SearchContainer'
 
 class App extends React.Component {
 
-
-
-
  render() {
 
    return (

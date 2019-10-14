@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {fetchTopSearches} from '../actions/fetchTopSearches.js'
-import {fetchallSearches} from '../actions/fetchallSearches.js'
+import {fetchallSearchTerms} from '../actions/fetchallSearchTerms.js'
 import { Link, Route, HashRouter } from "react-router-dom";
 import Search from './Searches'
 
@@ -16,7 +16,7 @@ class TopSearches extends React.Component {
     console.log('inside did mount')
     this.props.fetchTopSearches();
     // console.log('fetchTopSearches', this.props.fetchTopSearches())
-    this.props.fetchallSearches();
+    this.props.fetchallSearchTerms();
     // console.log('allsearches', this.props.fetchallSearches())
 
     //invoking the fetchTopSearches action creator withih ComponentDidMount-  ComponentDidMount is a LifeCycle method - where API calls are typically made.
@@ -26,8 +26,6 @@ class TopSearches extends React.Component {
   // handleSearches = event => {
   //     this.props.allSearches()
   // }
-
-
 
   render() {
     // this.convertToArrayofObject();
@@ -68,11 +66,11 @@ class TopSearches extends React.Component {
 const mapStateToProps = state => {
   return (
     {topSearches: state.topSearchReducer.topSearches,
-     allSearches: state.allSearchesReducer.allSearches
+     allSearches: state.allSearchTermsReducer.allSearches
     }
   )
 }
 
 
-export default connect(mapStateToProps, {fetchTopSearches, fetchallSearches})(TopSearches);
+export default connect(mapStateToProps, {fetchTopSearches, fetchallSearchTerms})(TopSearches);
 //connecting the store and topSearch component - passing mapStateToProps as a parameter, and action creator - dispatch takes place- more elegent way fo dispatching

@@ -3,9 +3,6 @@ import React from 'react'
 
  class CompareCard extends React.Component {
 
-
-
-
     render() {
       // console.log("Inside return",this.props.compare_detail)
         return (

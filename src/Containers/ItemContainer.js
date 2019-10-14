@@ -11,8 +11,6 @@ import '../newstyle.css'
 
 class ItemContainer extends React.Component {
 
-
-
  handleClickProductDetail (product_id) {
 
     console.log('product_id inside handleClickProductDetail', product_id)
@@ -23,7 +21,7 @@ class ItemContainer extends React.Component {
 
  handleClickCompareDetail (product_id) {
 
-     console.log('product_id inside handleClickCompareDetail', product_id)
+    console.log('product_id inside handleClickCompareDetail', product_id)
     this.props.fetchCompareDetails(product_id);
 
     // handleClickCompareDetail function which takes an item's product_id as a parameter - calls the fetchCompareDetails action creator
@@ -33,10 +31,11 @@ class ItemContainer extends React.Component {
  // items props is being passed from SearchContainer component - and mapping over the items array. Setting the link to Compare and Product Detail component - invoking the handleClickProductDetail and handleClickCompareDetail onClick - also being called within HashRouter
 
   render() {
-
-      if(this.props.items === undefined ){
-            return <center> <p>&nbsp;</p> Please enter a string value to search for items </center>
-         }
+      console.log('isLoading', this.props.isLoading)
+      console.log('ItemContainer error', this.props.error)
+      if(this.props.isClicked && this.props.items === undefined ){
+        return <center> <p>&nbsp;</p> Please enter a string value to search for items </center>
+      }
         return (
         <div>
             <table>
@@ -45,24 +44,20 @@ class ItemContainer extends React.Component {
                   <td>
                       <p> &nbsp;</p>
                       <p></p>
-                      <p>  <img src={item.product_image} alt="product_image"/></p>
+                      <p> <img src={item.product_image} alt="product_image"/></p>
                        <p>{item.product_title}</p>
 
                        <HashRouter>
                           <p><Link to={`/Compare/${item.product_id}`} onClick={() => this.handleClickCompareDetail(item.product_id)}> Compare Prices </Link></p>
                           <p><Link to={`/${item.product_id}`}  onClick={ () => this.handleClickProductDetail(item.product_id)}> Product Details </Link></p>
                           <Route exact path={`/Compare/${item.product_id}`} render={()=><CompareCard compare_detail={this.props.compareDetails}/>}/>
-                          <Route exact path={`/${item.product_id}`} render={()=><ProductDetail product_detail={this.props.productDetails}/>}/>
+                          <Route exact path={`/${item.product_id}`} render={()=><ProductDetail product_detail={this.props.productDetails} isLoading={this.props.isLoading} error={this.props.error}/>}/>
                         </HashRouter>
                  </td>
-
-
             ))}
             </table>
-
         </div>
       );
-
   }
 }
 
@@ -71,7 +66,10 @@ class ItemContainer extends React.Component {
 const mapStateToProps = state => {
   return (
     {productDetails: state.productDetailReducer.productDetails,
-     compareDetails: state.compareDetailReducer.compareDetails }
+     compareDetails: state.compareDetailReducer.compareDetails,
+     isLoading: state.productDetailReducer.isLoading,
+     error: state.productDetailReducer.error
+     }
   )
 }
 

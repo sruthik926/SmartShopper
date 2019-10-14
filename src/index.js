@@ -5,17 +5,17 @@ import {createStore, applyMiddleware, compose, combineReducers} from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import topSearchReducer from './reducers/topSearchReducer'
-import searchReducer from './reducers/searchReducer'
+import itemsReducer from './reducers/itemsReducer'
 import productDetailReducer from './reducers/productDetailReducer'
 import compareDetailReducer from './reducers/compareDetailReducer'
-import allSearchesReducer from './reducers/allSearchesReducer'
+import allSearchTermsReducer from './reducers/allSearchTermsReducer'
 
 const rootReducer = combineReducers({  //multiple reducers stored in one function
    topSearchReducer,
-   searchReducer,
+   itemsReducer,
    productDetailReducer,
    compareDetailReducer,
-   allSearchesReducer
+   allSearchTermsReducer
 
 })
 

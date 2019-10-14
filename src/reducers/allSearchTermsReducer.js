@@ -1,5 +1,5 @@
 
-export default function allSearchesReducer(state = {allSearches: []}, action) {
+export default function allSearchTermsReducer(state = {allSearches: []}, action) {
   switch (action.type) {
     case 'ALL_SEARCHES':
       console.log("Allsearch reducer",action.payload);
