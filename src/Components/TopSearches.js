@@ -7,21 +7,20 @@ import Search from './Searches'
 
 //connecting the TopSearch component to Redux store using connect.
 
-
 class TopSearches extends React.Component {
 
 
-  componentDidMount(){
-
-    console.log('inside did mount')
-    this.props.fetchTopSearches();
-    // console.log('fetchTopSearches', this.props.fetchTopSearches())
-    this.props.fetchallSearchTerms();
-    // console.log('allsearches', this.props.fetchallSearches())
-
-    //invoking the fetchTopSearches action creator withih ComponentDidMount-  ComponentDidMount is a LifeCycle method - where API calls are typically made.
-
-  }
+  // componentDidMount(){
+  //
+  //   console.log('inside did mount')
+  //   this.props.fetchTopSearches();
+  //   // console.log('fetchTopSearches', this.props.fetchTopSearches())
+  //   this.props.fetchallSearchTerms();
+  //   // console.log('allsearches', this.props.fetchallSearches())
+  //
+  //   //invoking the fetchTopSearches action creator withih ComponentDidMount-  ComponentDidMount is a LifeCycle method - where API calls are typically made.
+  //
+  // }
   //
   // handleSearches = event => {
   //     this.props.allSearches()
@@ -54,7 +53,7 @@ class TopSearches extends React.Component {
        </table>
        <HashRouter>
            <p><Link to='/searches'> All Searches </Link></p>
-             <Route exact path='/searches' render={()=><Search all_searches={this.props.allSearches}/>}/>
+             <Route exact path='/searches' render={()=><Search all_searches={this.props.allSearchTerms}/>}/>
        </HashRouter>
      </div>
      )
@@ -66,11 +65,10 @@ class TopSearches extends React.Component {
 const mapStateToProps = state => {
   return (
     {topSearches: state.topSearchReducer.topSearches,
-     allSearches: state.allSearchTermsReducer.allSearches
     }
   )
 }
 
 
-export default connect(mapStateToProps, {fetchTopSearches, fetchallSearchTerms})(TopSearches);
+export default connect(mapStateToProps, {fetchTopSearches})(TopSearches);
 //connecting the store and topSearch component - passing mapStateToProps as a parameter, and action creator - dispatch takes place- more elegent way fo dispatching

@@ -27,7 +27,8 @@ class SearchContainer extends React.Component {
      });
     this.props.fetchItems(this.state.searchTerm);
     console.log('A');
-    this.props.insertSearchTerm(this.state.searchTerm);
+    if(this.state.searchTerm)
+      this.props.insertSearchTerm(this.state.searchTerm);
     console.log('B');
   }
 
@@ -57,7 +58,8 @@ class SearchContainer extends React.Component {
 
 const mapStateToProps = state => {
   return (
-    {searches: state.itemsReducer.searches}
+    {searches: state.itemsReducer.searches
+    }
   )
 }
 // returns searchdata from Redux store -

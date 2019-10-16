@@ -9,13 +9,20 @@ import NavBar from './NavBar'
 import Contact from '../Components/Contact'
 import TopSearches from './TopSearches'
 import SearchContainer from '../Containers/SearchContainer'
+import {fetchTopSearches} from '../actions/fetchTopSearches.js'
+import {fetchallSearchTerms} from '../actions/fetchallSearchTerms.js'
+import { connect } from 'react-redux'
 
 //imported all the required components - in order to render within the app component.
 
 class App extends React.Component {
 
- render() {
+  componentDidMount(){
+      this.props.fetchallSearchTerms();
+  }
 
+ render() {
+      console.log('before fetch')
    return (
      <div>
      <header className="App-header">
@@ -26,16 +33,25 @@ class App extends React.Component {
               <Route exact path="/Search" component={SearchContainer}/>
               <Route exact path="/TopSearches" component={TopSearches}/>
               </Router>
-              </header>
+      </header>
      </div>
 
    )
  }
 }
 
+const mapStateToProps = state => {
+  return (
+    {
+     allSearchTerms: state.allSearchTermsReducer.allSearchTerms
+    }
+  )
+}
+
+
 // Router component being invoked within App, NavBar is being invoked, seen within app component - It is setting the routes for the About, Contact, SearchContainer and TopSearches components
 //when we type /About in the url bar, we will be taken to the About Component, it's the same concept for the SearchContsiner, Contact and TopSearches components. Yhe only difference is the route -
 
-export default App;
+export default connect(mapStateToProps, {fetchallSearchTerms})(App);
 
 // Export default - set so that App component can be rendered within other components -
