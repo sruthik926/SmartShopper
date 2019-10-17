@@ -31,7 +31,7 @@ let myStore = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
  // Provider component is used to set the connection between the component and the store, store is passed in as a prop
 render (
   <Provider store={myStore}>
-  <App />
+  <App/>
   </Provider>,
   document.getElementById('root')
 );

@@ -14,6 +14,10 @@ export function insertSearchTerm(searchTerm) {
                searchTerm: searchTerm,
                res: data
             })
+            dispatch({
+               type:'UPDATE_TOP_SEARCH',
+               searchTerm: searchTerm,
+            })
           }
         )
       }

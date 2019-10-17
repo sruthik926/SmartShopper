@@ -2,35 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {fetchTopSearches} from '../actions/fetchTopSearches.js'
 import {fetchallSearchTerms} from '../actions/fetchallSearchTerms.js'
-import { Link, Route, HashRouter } from "react-router-dom";
+import { Link, Route, BrowserRouter } from "react-router-dom";
 import Search from './Searches'
 
 //connecting the TopSearch component to Redux store using connect.
 
 class TopSearches extends React.Component {
 
-
-  // componentDidMount(){
-  //
-  //   console.log('inside did mount')
-  //   this.props.fetchTopSearches();
-  //   // console.log('fetchTopSearches', this.props.fetchTopSearches())
-  //   this.props.fetchallSearchTerms();
-  //   // console.log('allsearches', this.props.fetchallSearches())
-  //
-  //   //invoking the fetchTopSearches action creator withih ComponentDidMount-  ComponentDidMount is a LifeCycle method - where API calls are typically made.
-  //
-  // }
-  //
-  // handleSearches = event => {
-  //     this.props.allSearches()
-  // }
-
   render() {
-    // this.convertToArrayofObject();
-   // console.log('newArr', this.state.arr)
-    // console.log('topsearches', this.props.topSearches)
-    console.log('searches', this.props.allSearches)
     return(
       <div className="topsearches">
        <table border="2" align="center">
@@ -51,24 +30,23 @@ class TopSearches extends React.Component {
            )}
          </tbody>
        </table>
-       <HashRouter>
+       <BrowserRouter>
            <p><Link to='/searches'> All Searches </Link></p>
-             <Route exact path='/searches' render={()=><Search all_searches={this.props.allSearchTerms}/>}/>
-       </HashRouter>
+             <Route exact path='/searches' render={()=><Search allSearchTerms={this.props.allSearchTerms}/>}/>
+       </BrowserRouter>
      </div>
      )
    }
- }
-
+}
 //mapStateToProps  - return updated state of topSearched and being passed as prop-
 
-const mapStateToProps = state => {
-  return (
-    {topSearches: state.topSearchReducer.topSearches,
-    }
-  )
-}
+// const mapStateToProps = state => {
+//   return (
+//     {topSearches: state.topSearchReducer.topSearches,
+//     }
+//   )
+// }
 
 
-export default connect(mapStateToProps, {fetchTopSearches})(TopSearches);
+export default TopSearches
 //connecting the store and topSearch component - passing mapStateToProps as a parameter, and action creator - dispatch takes place- more elegent way fo dispatching
