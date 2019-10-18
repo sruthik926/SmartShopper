@@ -17,7 +17,7 @@ import { connect } from 'react-redux'
 //imported all the required components - in order to render within the app component.
 
 class App extends React.Component {
-
+  
   componentDidMount(){
       this.props.fetchallSearchTerms();
       this.props.fetchTopSearches();

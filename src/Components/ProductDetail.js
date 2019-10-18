@@ -3,11 +3,8 @@ import React from 'react'
 class ProductDetail extends React.Component {
 
  render() {
-      // console.log('sru inside productDetails', this.props.product_detail)
-      // console.log('isLoading', this.props.isLoading)
+
        if(this.props.error){
-         // return <div> Error! {this.props.error} </div>
-         console.log('Product Detail error', this.props.error)
          return <div> Not Found </div>
        }
 

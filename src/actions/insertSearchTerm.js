@@ -10,7 +10,7 @@ export function insertSearchTerm(searchTerm) {
       }).then(res => res.json())
         .then(data => {
             dispatch({
-               type:'INSERT_SEARCH_TERM',
+               type:'UPDATE_SEARCH_TERM',
                searchTerm: searchTerm,
                res: data
             })

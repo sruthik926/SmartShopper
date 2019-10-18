@@ -20,9 +20,7 @@ const NavBar = () => {
             <NavLink tag={Link} to="/Search">Search</NavLink>
           </Nav>
         </Navbar>
-
     )
-
 }
 
 

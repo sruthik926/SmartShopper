@@ -38,15 +38,6 @@ class TopSearches extends React.Component {
      )
    }
 }
-//mapStateToProps  - return updated state of topSearched and being passed as prop-
-
-// const mapStateToProps = state => {
-//   return (
-//     {topSearches: state.topSearchReducer.topSearches,
-//     }
-//   )
-// }
-
 
 export default TopSearches
 //connecting the store and topSearch component - passing mapStateToProps as a parameter, and action creator - dispatch takes place- more elegent way fo dispatching

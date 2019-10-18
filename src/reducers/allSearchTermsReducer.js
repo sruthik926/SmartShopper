@@ -4,7 +4,7 @@ export default function allSearchTermsReducer(state = {allSearchTerms: []}, acti
     case 'ALL_SEARCHES':
       console.log("Allsearch reducer",action.payload);
       return {...state, allSearchTerms: action.payload}
-    case 'INSERT_SEARCH_TERM':
+    case 'UPDATE_SEARCH_TERM':
       console.log('insert search term action', action)
       return {
           ...state,

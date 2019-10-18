@@ -11,8 +11,6 @@ export function fetchItems(searchTerm) {
         type: 'FETCH_SEARCHES',
         payload: searches
      }))
-
-
    }
 
 }
