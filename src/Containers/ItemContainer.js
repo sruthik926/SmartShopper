@@ -31,8 +31,6 @@ class ItemContainer extends React.Component {
  // items props is being passed from SearchContainer component - and mapping over the items array. Setting the link to Compare and Product Detail component - invoking the handleClickProductDetail and handleClickCompareDetail onClick - also being called within HashRouter
 
   render() {
-      console.log('isLoading', this.props.isLoading)
-      console.log('ItemContainer error', this.props.error)
       if(this.props.isClicked && this.props.items === undefined ){
         return <center> <p>&nbsp;</p> Please enter a string value to search for items </center>
       }
