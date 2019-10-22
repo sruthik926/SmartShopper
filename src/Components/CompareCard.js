@@ -10,7 +10,7 @@ import { Button} from 'reactstrap';
 
     handleClick = () => {
       console.log('Hello!');
-      let newState = this.props.compare_detail.data['stores'];
+      let newState = this.props.compare_detail.data['stores'].slice();
        console.log('newState', newState);
 
         newState.sort(function(a, b) {
@@ -29,23 +29,29 @@ import { Button} from 'reactstrap';
       // console.log('newState', newState);
         // console.log('newState', newState);
        // console.log('newState', newState);
-       this.setState({renderedData: this.state.newState,
+       this.setState({renderedData: newState,
                       sortClicked: true
        });
     }
 
     render() {
-      if(!this.state.isClicked) {
-         this.setState({renderedData: this.props.compare_detail.data.stores})
-      }
+      console.log('inside render, rendered data', this.props.compare_detail.data)
+      // if(!this.state.sortClicked) {
+      //    this.setState({renderedData: this.props.compare_detail.data.stores})
+      // }
       console.log('inside render, rendered data', this.state.renderedData)
+      //console.log('compare card', this.props.compare_detail.data.stores)
+
       // console.log('inside rendered data props', this.props.compare_detail);
       // console.log("Inside render of Compare Card", Object.values(this.props.compare_detail.data));
+      if(!this.state.sortClicked) {
         return (
+
             <div>
+
               <th>Prices</th>
                 <table>
-                  {this.props.compare_detail.data && Object.values(this.state.renderedData).map((storeObj, index) => {
+                  {this.props.compare_detail.data && Object.values(this.props.compare_detail.data.stores).map((storeObj, index) => {
               //      console.log('compare_detail inside render compareCard', this.props.compare_detail)
                     for(let key of Object.keys(storeObj)) {
                 //    console.log('key', key)
@@ -63,6 +69,33 @@ import { Button} from 'reactstrap';
                    <Button type="submit" color="primary" className="text-center" size="sm" onClick={this.handleClick}> Sort Company List from A-Z</Button>
             </div>
           )
+        }
+        else {
+          return (
+
+              <div>
+
+                <th>Prices</th>
+                  <table>
+                    {this.props.compare_detail.data && Object.values(this.state.renderedData).map((storeObj, index) => {
+                //      console.log('compare_detail inside render compareCard', this.props.compare_detail)
+                      for(let key of Object.keys(storeObj)) {
+                  //    console.log('key', key)
+                        let store = storeObj[key];
+                  //    console.log('store', storeObj[key])
+                          if(store.length === 0){
+                            return <li> {key.charAt(0).toUpperCase() + key.slice(1)}: No Data Available </li>;
+                          }
+                        // console.log('product_store', store.product_store)
+                            return <li> <strong> {store.product_store.charAt(0).toUpperCase() + store.product_store.slice(1)}: ${(store.product_price/70).toFixed(2)} dollars </strong> </li>;
+                        // console.log('store name', store.product_store, 'price', store.product_price)
+                        }
+                    })}
+                  </table>
+                     <Button type="submit" color="primary" className="text-center" size="sm" onClick={this.handleClick}> Sort Company List from A-Z</Button>
+              </div>
+            )
+        }
         }
  }
 
