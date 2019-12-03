@@ -47,7 +47,7 @@ import { Button} from 'reactstrap';
          var data = this.state.renderedData
       }
       if(this.props.compare_detail.data && !this.state.sortClicked){
-         var data = this.props.compare_detail.data.stores
+         data = this.props.compare_detail.data.stores
       }
           // const renderStore = (this.props.compare_detail.d && this.state.sortClicked) ? this.state.renderedData : this.props.compare_detail.data.stores
         return (

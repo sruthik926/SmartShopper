@@ -39,14 +39,14 @@ class SearchContainer extends React.Component {
 
     return (
 
-      <div>
+      <div className="form">
        <form onSubmit={this.handleSubmit}>
           <input id="searchterm" name="searchterm" type="text" placeholder="Search Item" onChange={this.handleSearchInputChange}/>
              <Button type="submit" color="primary"  className="text-center" size="sm">Search</Button>
-         </form>
+        </form>
           <div>
              <ItemContainer items={this.props.searches.data} isClicked={this.state.isClicked}/>
-           </div>
+          </div>
         </div>
 
     );

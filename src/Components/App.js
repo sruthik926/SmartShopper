@@ -8,7 +8,6 @@ import About from './About'
 import NavBar from './NavBar'
 import Contact from '../Components/Contact'
 import TopSearches from './TopSearches'
-import Search from './Searches'
 import SearchContainer from '../Containers/SearchContainer'
 import {fetchTopSearches} from '../actions/fetchTopSearches.js'
 import {fetchallSearchTerms} from '../actions/fetchallSearchTerms.js'
@@ -17,7 +16,7 @@ import { connect } from 'react-redux'
 //imported all the required components - in order to render within the app component.
 
 class App extends React.Component {
-  
+
   componentDidMount(){
       this.props.fetchallSearchTerms();
       this.props.fetchTopSearches();

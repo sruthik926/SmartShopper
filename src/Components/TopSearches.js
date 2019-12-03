@@ -1,7 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import {fetchTopSearches} from '../actions/fetchTopSearches.js'
-import {fetchallSearchTerms} from '../actions/fetchallSearchTerms.js'
 import { Link, Route, BrowserRouter } from "react-router-dom";
 import Search from './Searches'
 
