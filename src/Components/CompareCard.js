@@ -43,18 +43,31 @@ import { Button} from 'reactstrap';
     }
 
     render() {
-      if(this.props.compare_detail.data && this.state.sortClicked){
-         var data = this.state.renderedData
+      if(this.props.error){
+        console.log(this.props.error, 'error in comparecard')
+        return <div> Not Found </div>
       }
-      if(this.props.compare_detail.data && !this.state.sortClicked){
+
+      if(this.props.isLoading){
+        console.log('loading in comparecard')
+        return <p>Loading...</p>
+      }
+
+      let data;
+      if(this.props.compare_detail && this.state.sortClicked){
+        data = this.state.renderedData
+      }
+      if(this.props.compare_detail && !this.state.sortClicked){
          data = this.props.compare_detail.data.stores
       }
+
+
           // const renderStore = (this.props.compare_detail.d && this.state.sortClicked) ? this.state.renderedData : this.props.compare_detail.data.stores
         return (
             <div>
               <th>Prices</th>
                 <table>
-                  {this.props.compare_detail.data && Object.values(data).map((storeObj, index) => {
+                  {this.props.compare_detail && Object.values(data).map((storeObj, index) => {
                    console.log('compare_detail inside render compareCard', this.props.compare_detail.data.stores)
                     for(let key of Object.keys(storeObj)) {
                 //    console.log('key', key)

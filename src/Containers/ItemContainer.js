@@ -48,7 +48,7 @@ class ItemContainer extends React.Component {
                        <HashRouter>
                           <p><Link to={`/Compare/${item.product_id}`} onClick={() => this.handleClickCompareDetail(item.product_id)}> Compare Prices </Link></p>
                           <p><Link to={`/${item.product_id}`}  onClick={ () => this.handleClickProductDetail(item.product_id)}> Product Details </Link></p>
-                          <Route exact path={`/Compare/${item.product_id}`} render={()=><CompareCard compare_detail={this.props.compareDetails}/>}/>
+                          <Route exact path={`/Compare/${item.product_id}`} render={()=><CompareCard compare_detail={this.props.compareDetails} isLoading={this.props.isLoading} error={this.props.error}/>}/>
                           <Route exact path={`/${item.product_id}`} render={()=><ProductDetail product_detail={this.props.productDetails} isLoading={this.props.isLoading} error={this.props.error}/>}/>
                       </HashRouter>
                  </td>

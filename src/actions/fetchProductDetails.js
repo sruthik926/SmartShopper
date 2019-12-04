@@ -10,7 +10,7 @@ export function fetchProductDetails(product_id) {
         type: 'FETCH_PRODUCT_DETAILS',
         payload: product_detail_data
      }))
-     .catch(error => dispatch(fetchProductsFailure(error)));
+     .catch(console.log(error => dispatch(fetchProductsFailure(error))));
    }
 }
 

@@ -5,7 +5,7 @@ export default function productDetailReducer(state = {productDetails: []}, actio
       return {productDetails: action.payload, isLoading: false};
     case 'FETCH_PRODUCTS_FAILURE':
      return {error: action.payload.error, isLoading: false}
-     case 'REQUEST_PRODUCT_DETAILS':
+    case 'REQUEST_PRODUCT_DETAILS':
       return {productDetails: action.payload, isLoading: true};
     default:
       return state
